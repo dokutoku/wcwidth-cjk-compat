@@ -116,6 +116,11 @@ jobs:
           run: |
             call vc_init.bat && C:\ldc2\bin\dub.exe build --force --combined --arch=${{ matrix.dub-arch }} --build=${{ matrix.build-type }} --compiler=C:\ldc2\bin\ldc2.exe
 
+        - name: build example
+          shell: cmd
+          run: |
+            call vc_init.bat && cd example && C:\D\dmd2\windows\bin\dub.exe build --force --combined --arch=${{ matrix.dub-arch }} --build=${{ matrix.build-type }} --compiler=C:\D\dmd2\windows\bin\dmd.exe && C:\ldc2\bin\dub.exe build --force --combined --arch=${{ matrix.dub-arch }} --build=${{ matrix.build-type }} --compiler=C:\ldc2\bin\ldc2.exe
+
         - name: Create Windows archive
           run: |
             mkdir '${{ steps.init-asset-name.outputs.asset_base_name }}';
