@@ -53,7 +53,7 @@ private bool bisearch(uint ucs, immutable ref .interval[] table, size_t max)
 
 	in
 	{
-		assert(table != null);
+		//assert(table != null);
 	}
 
 	do
