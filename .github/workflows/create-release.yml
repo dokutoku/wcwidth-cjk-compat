@@ -119,7 +119,7 @@ jobs:
         - name: build example
           shell: cmd
           run: |
-            call vc_init.bat && cd example && C:\D\dmd2\windows\bin\dub.exe build --force --combined --arch=${{ matrix.dub-arch }} --build=${{ matrix.build-type }} --compiler=C:\D\dmd2\windows\bin\dmd.exe && C:\ldc2\bin\dub.exe build --force --combined --arch=${{ matrix.dub-arch }} --build=${{ matrix.build-type }} --compiler=C:\ldc2\bin\ldc2.exe
+            call vc_init.bat && cd example && C:\ldc2\bin\dub.exe build --force --combined --arch=${{ matrix.dub-arch }} --build=${{ matrix.build-type }} --compiler=C:\ldc2\bin\ldc2.exe
 
         - name: Create Windows archive
           run: |
@@ -127,7 +127,7 @@ jobs:
             mkdir '${{ steps.init-asset-name.outputs.asset_base_name }}\bin';
             mkdir '${{ steps.init-asset-name.outputs.asset_base_name }}\include';
             mkdir '${{ steps.init-asset-name.outputs.asset_base_name }}\lib';
-            robocopy /e /s 'example\cmd-test.exe' '${{ steps.init-asset-name.outputs.asset_base_name }}\bin\';
+            cp 'example\cmd-test.exe' '${{ steps.init-asset-name.outputs.asset_base_name }}\bin\cmd-test.exe';
             robocopy /e /s 'include\' '${{ steps.init-asset-name.outputs.asset_base_name }}\include\';
             robocopy /e /s 'lib\' '${{ steps.init-asset-name.outputs.asset_base_name }}\lib\';
             cp 'README.md' '${{ steps.init-asset-name.outputs.asset_base_name }}\';
@@ -373,7 +373,7 @@ jobs:
             mkdir '${{ steps.init-asset-name.outputs.asset_base_name-x86_64 }}/bin';
             mkdir '${{ steps.init-asset-name.outputs.asset_base_name-x86_64 }}/include';
             mkdir '${{ steps.init-asset-name.outputs.asset_base_name-x86_64 }}/lib';
-            cp -r ./example/cmd-test '${{ steps.init-asset-name.outputs.asset_base_name }}/bin/cmd-test';
+            cp -r ./example/cmd-test '${{ steps.init-asset-name.outputs.asset_base_name-x86_64 }}/bin/cmd-test';
             cp -r ./include/* '${{ steps.init-asset-name.outputs.asset_base_name-x86_64 }}/include/';
             cp -r ./lib/* '${{ steps.init-asset-name.outputs.asset_base_name-x86_64 }}/lib/';
             cp './README.md' '${{ steps.init-asset-name.outputs.asset_base_name-x86_64 }}/';
