@@ -1,0 +1,12 @@
+{
+	"name": "cmd-test",
+	"description": "wcwidth-cjk cmd example.",
+	"authors": ["dokutoku"],
+	"copyright": "Copyright © 2021, dokutoku",
+	"license": "BSD-like(2-clause)",
+	"targetType": "executable",
+	"dependencies":
+	{
+		"wcwidth-cjk-compat": {"path": "../"}
+	}
+}
