@@ -1,0 +1,3 @@
+[submodule "wcwidth-cjk"]
+	path = wcwidth-cjk
+	url = https://github.com/fumiyas/wcwidth-cjk.git
