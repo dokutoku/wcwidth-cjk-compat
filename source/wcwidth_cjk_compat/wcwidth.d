@@ -23,7 +23,7 @@ module wcwidth_cjk_compat.wcwidth;
 
 
 extern (C)
-public struct wcwidth_cjk_compat_option
+public struct wcwidth_cjk_option
 {
 	ubyte is_apple = 0;
 	ubyte is_legacy_ja = 0;
