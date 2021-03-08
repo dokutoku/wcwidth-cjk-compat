@@ -31,7 +31,7 @@ public struct wcwidth_cjk_compat_option
 }
 
 extern (C)
-public static immutable wcwidth_cjk_compat_option default_wcwidth_cjk_compat_option =
+public static immutable wcwidth_cjk_option default_wcwidth_cjk_option =
 {
 	is_apple: 0,
 	is_legacy_ja: 0,
@@ -39,7 +39,7 @@ public static immutable wcwidth_cjk_compat_option default_wcwidth_cjk_compat_opt
 };
 
 extern (C)
-public static immutable wcwidth_cjk_compat_option* default_wcwidth_cjk_compat_option_ptr = &.default_wcwidth_cjk_compat_option;
+public static immutable wcwidth_cjk_option* default_wcwidth_cjk_option_ptr = &.default_wcwidth_cjk_option;
 
 private struct interval
 {
@@ -174,7 +174,7 @@ private static immutable .interval[] not_apple =
 
 extern (C)
 pure nothrow @safe @nogc @live
-public int wcwidth_ucs_compat(uint ucs, scope const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr)
+public int wcwidth_ucs(uint ucs, scope const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr)
 
 	in
 	{
@@ -246,7 +246,7 @@ public int wcwidth_ucs_compat(uint ucs, scope const wcwidth_cjk_compat_option* o
 
 extern (C)
 pure nothrow @trusted @nogc @live
-public int wcswidth_ucs_compat(scope const uint* pwcs, size_t n, scope const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr)
+public int wcswidth_ucs(scope const uint* pwcs, size_t n, scope const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr)
 
 	in
 	{
@@ -260,7 +260,7 @@ public int wcswidth_ucs_compat(scope const uint* pwcs, size_t n, scope const wcw
 		const (uint)* pwcs_ptr = pwcs;
 
 		for (; (*pwcs_ptr != '\0') && (n-- != 0); pwcs_ptr++) {
-			int w = .wcwidth_ucs_compat(*pwcs_ptr, option);
+			int w = .wcwidth_ucs(*pwcs_ptr, option);
 
 			if (w < 0) {
 				return -1;
@@ -369,7 +369,7 @@ private static immutable .interval[] emoji =
 
 extern (C)
 pure nothrow @safe @nogc @live
-public int wcwidth_cjk_compat(uint ucs, scope const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr)
+public int wcwidth_cjk(uint ucs, scope const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr)
 
 	in
 	{
@@ -395,12 +395,12 @@ public int wcwidth_cjk_compat(uint ucs, scope const wcwidth_cjk_compat_option* o
 			}
 		}
 
-		return .wcwidth_ucs_compat(ucs, option);
+		return .wcwidth_ucs(ucs, option);
 	}
 
 extern (C)
 pure nothrow @trusted @nogc @live
-public int wcswidth_cjk_compat(scope const uint* pwcs, size_t n, scope const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr)
+public int wcswidth_cjk(scope const uint* pwcs, size_t n, scope const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr)
 
 	in
 	{
@@ -414,7 +414,7 @@ public int wcswidth_cjk_compat(scope const uint* pwcs, size_t n, scope const wcw
 		const (uint)* pwcs_ptr = pwcs;
 
 		for (; (*pwcs_ptr != '\0') && (n-- != 0); pwcs_ptr++) {
-			int w = .wcwidth_cjk_compat(*pwcs_ptr, option);
+			int w = .wcwidth_cjk(*pwcs_ptr, option);
 
 			if (w < 0) {
 				return -1;

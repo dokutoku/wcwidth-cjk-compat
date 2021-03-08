@@ -80,7 +80,7 @@ int main(string[] argv)
 				}
 
 				wc = wc_temp;
-				int wc_width = wcwidth_cjk_compat.wcwidth.wcwidth_cjk_compat(wc);
+				int wc_width = wcwidth_cjk.wcwidth.wcwidth_cjk(wc);
 
 				core.stdc.string.strncpy(mb_buf, mb_p, mb_consumed);
 				mb_buf[mb_consumed] = '\0';

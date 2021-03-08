@@ -28,15 +28,15 @@
 extern "C" {
 #endif
 
-typedef struct wcwidth_cjk_compat_option
+typedef struct wcwidth_cjk_option
 {
 	uint8_t is_apple = 0;
 	uint8_t is_legacy_ja = 0;
 	uint8_t is_emoji = 1;
-} wcwidth_cjk_compat_option;
+} wcwidth_cjk_option;
 
-extern const wcwidth_cjk_compat_option default_wcwidth_cjk_compat_option;
-extern const wcwidth_cjk_compat_option* default_wcwidth_cjk_compat_option_ptr;
+extern const wcwidth_cjk_option default_wcwidth_cjk_option;
+extern const wcwidth_cjk_option* default_wcwidth_cjk_option_ptr;
 
 /*
  * The following two functions define the column width of an ISO 10646
@@ -71,8 +71,8 @@ extern const wcwidth_cjk_compat_option* default_wcwidth_cjk_compat_option_ptr;
  * in ISO 10646.
  */
 
-int32_t wcwidth_ucs_compat(uint32_t ucs, const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr);
-int32_t wcswidth_ucs_compat(const uint32_t* pwcs, size_t n, const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr);
+int32_t wcwidth_ucs(uint32_t ucs, const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr);
+int32_t wcswidth_ucs(const uint32_t* pwcs, size_t n, const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr);
 
 /*
  * The following functions are the same as wcwidth_ucs() and
@@ -98,8 +98,8 @@ int32_t wcswidth_ucs_compat(const uint32_t* pwcs, size_t n, const wcwidth_cjk_co
 	//#undef wcwidth
 //#endif
 
-int32_t wcwidth_cjk_compat(uint32_t ucs, const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr);
-int32_t wcswidth_cjk_compat(const uint32_t* pwcs, size_t n, const wcwidth_cjk_compat_option* option = default_wcwidth_cjk_compat_option_ptr);
+int32_t wcwidth_cjk(uint32_t ucs, const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr);
+int32_t wcswidth_cjk(const uint32_t* pwcs, size_t n, const wcwidth_cjk_option* option = default_wcwidth_cjk_option_ptr);
 
 #ifdef __cplusplus
 }
